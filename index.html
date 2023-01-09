@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="main.png" />
+    <title>Tip Tap Toe</title>
+</head>
+<body>
+    <h1 id="titolo">Tip Tap Toe</h1>
+
+    
+    <table class="left">
+        <tr>
+            <th class="players-left playerone" onclick="check1()">Player1</th>
+            <th class="players-left playertwo" onclick="check2()">Player2</th>
+        </tr>
+        <tr>
+            <td class="scores-left scoreone">0</td>
+            <td class="scores-left scoretwo">0</td>
+        </tr>
+    </table>
+
+    <h2 class="round"></h2>
+
+    <table>
+    <tr>
+        <td id="col11" class="notop noleft neonText"></td>
+        <td id="col12" class="notop neonText"></td>
+        <td id="col13" class="notop noright neonText"></td>
+    </tr>
+
+    <tr>
+        <td id="col21" class="noleft neonText"></td>
+        <td id="col22" class="neonText"></td>
+        <td id="col23" class="noright neonText"></td>
+    </tr>
+
+    <tr>
+        <td id="col31" class="noleft nobot neonText"></td>
+        <td id="col32" class="nobot neonText"></td>
+        <td id="col33" class="noright nobot neonText"></td>
+    </tr>
+
+    </table>
+
+    </div>
+
+    <div class="error text-right"></div>
+    <div class="nowinners text-right"></div>
+    <div class="turn text-left"></div>
+    <div class="finegioco text-left"></div>
+    <h1 class="big-text" onclick="reset_text()"></h1>
+    <div class="img"></div>
+
+    <div class="footer">Made with love by Ana-Maria Tanasciuc© 2022</div>
+
+    <!-- <div class="fade-in-text-sub">aaaaaaaaaaaaaaaaa</div> -->
+
+    <script src="script.js"></script>
+</body>
+</html>
