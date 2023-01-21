@@ -4,6 +4,7 @@ let player1win = 0;
 let player2win = 0;
 let round = 0;
 let pareggio = 0;
+let flag =0;
 
 let row1x = 0;
 let row1o = 0;
@@ -34,10 +35,10 @@ let c32= document.getElementById("col32");
 let c33= document.getElementById("col33");
 let turn = document.querySelector(".turn");             //WILL USE TO DISPLAY TURNS
 
-let player1 = prompt("Enter player one's name: ");
-let player2 = prompt("Enter player two's name: ");
-// let player1 = "Ana";
-// let player2 = "Denis";
+// let player1 = prompt("Enter player one's name: ");
+// let player2 = prompt("Enter player two's name: ");
+let player1 = "Ana";
+let player2 = "Denis";
 
 
 document.querySelector(".playerone").innerHTML=player1;
@@ -57,9 +58,7 @@ c11.onclick=function(){
             down1x++;
             ex1x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -70,9 +69,7 @@ c11.onclick=function(){
             down1o++;
             ex1o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -92,9 +89,7 @@ c12.onclick=function(){
             row1x++;
             down2x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -104,9 +99,7 @@ c12.onclick=function(){
             row1o++;
             down2o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -127,9 +120,7 @@ c13.onclick=function(){
             down3x++;
             ex2x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -140,9 +131,7 @@ c13.onclick=function(){
             down3o++;
             ex2o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -164,9 +153,7 @@ c21.onclick=function(){
             row2x++;
             down1x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -176,9 +163,7 @@ c21.onclick=function(){
             row2o++;
             down1o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -200,9 +185,7 @@ c22.onclick=function(){
             ex1x++;
             ex2x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -214,9 +197,7 @@ c22.onclick=function(){
             ex1o++;
             ex2o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -236,9 +217,7 @@ c23.onclick=function(){
             row2x++;
             down3x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -248,9 +227,7 @@ c23.onclick=function(){
             row2o++;
             down3o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -272,9 +249,7 @@ c31.onclick= function(){
             down1x++;
             ex2x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -285,9 +260,7 @@ c31.onclick= function(){
             down1o++;
             ex2o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -307,9 +280,7 @@ c32.onclick=function(){
             row3x++;
             down2x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -319,9 +290,7 @@ c32.onclick=function(){
             row3o++;
             down2o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -342,9 +311,7 @@ c33.onclick=function(){
             down3x++;
             ex1x++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
         else{
@@ -355,9 +322,7 @@ c33.onclick=function(){
             down3o++;
             ex1o++;
             winner();
-            if(times == 9){
-                round_reset();
-            }
+            
         }
 
     }
@@ -367,16 +332,10 @@ c33.onclick=function(){
 }
 
 
-round_reset = function (){
-    c11.innerHTML=""; 
-    c12.innerHTML=""; 
-    c13.innerHTML=""; 
-    c21.innerHTML=""; 
-    c22.innerHTML=""; 
-    c23.innerHTML=""; 
-    c31.innerHTML=""; 
-    c32.innerHTML=""; 
-    c33.innerHTML="";
+
+//setTimeout(function , time); <--- setTimeout syntax
+//set all rows to unclicked, and times clicked to 0, executing the function blabla() with a 0.5 second delay
+function round_reset(){
     times = 0;
     row1x = 0;
     row2x = 0;
@@ -394,45 +353,71 @@ round_reset = function (){
     ex2x = 0;
     ex1o = 0;
     ex2o = 0;
+    setTimeout( blabla, 500);
+}
+function blabla (){
+    c11.innerHTML=""; 
+    c12.innerHTML=""; 
+    c13.innerHTML=""; 
+    c21.innerHTML=""; 
+    c22.innerHTML=""; 
+    c23.innerHTML=""; 
+    c31.innerHTML=""; 
+    c32.innerHTML=""; 
+    c33.innerHTML="";
+   
 }
 
+//this function gets checked everytime the player clicks a block
+//reset nowinner error to ""
+//if player1 x has won in any direction then write $player1 has won $round, increment the round and the player1's wins
+//refresh player1's score to player1's wins, refresh the round, call function round_reset() and end_winner()
 winner = function(){
+    if(document.querySelector(".nowinners")!=""){
+    document.querySelector(".nowinners").innerHTML="";
+    }
     if (row1x == 3 || row2x == 3 || row3x == 3 || down1x == 3 || down2x == 3 || down3x == 3 || ex1x == 3 || ex2x == 3){
         document.querySelector(".finegioco").innerHTML=`${player1} won round ${round+1}`;
         round++;
         player1win++;
+        flag==1;
         document.querySelector(".scoreone").innerHTML=player1win;
         document.querySelector(".round").innerHTML=`Round: ${round+1}`;
         round_reset();
         end_winner();
     }
+//same as above but for O player2
     else if (row1o == 3 || row2o == 3 || row3o == 3 || down1o == 3 || down2o == 3 || down3o == 3 || ex1o == 3 || ex2o == 3){
         document.querySelector(".finegioco").innerHTML=`${player2} won round ${round+1}`;
         round++;
         player2win++;
+        flag==1;
         document.querySelector(".scoretwo").innerHTML=player2win;
         document.querySelector(".round").innerHTML=`Round: ${round+1}`;
         round_reset();
         end_winner();
     }
+//check if it's been a draw for 5 games, if yes then write it's a draw! and call game_reset()
     else if(pareggio == 5){
         document.querySelector(".big-text").innerHTML="It's a draw!";
         game_reset();
     }
-    document.querySelector(".nowinners").innerHTML="";
-    document.querySelector(".error").innerHTML="";
-    whoseturn();
-    check_pareggio();
-    if(round!=0){
-        document.querySelector(".big-text").innerHTML="";
-    }
-}
-check_pareggio = function(){
-    if(times == 9){
+//if players have clicked all 9 squares without a win then call for round_reset() writting that there were no winners
+//increment pareggio and round
+    else if(times == 9 && flag==1){
         document.querySelector(".nowinners").innerHTML="There are no winners";
         pareggio++;
         round++;
         document.querySelector(".round").innerHTML=`Round: ${round+1}`;
+        round_reset();
+        flag==0;
+    }
+//empty error "block already occupied"
+    document.querySelector(".error").innerHTML="";
+    whoseturn();
+//at end of first round empty the string saying who won the game
+    if(round!=0){
+        document.querySelector(".big-text").innerHTML="";
     }
 }
 //REFRESHES TEXT OF WHOSE TURN IT IS
@@ -465,6 +450,7 @@ game_reset = function(){
     document.querySelector(".scoreone").innerHTML=player1win;
     document.querySelector(".scoretwo").innerHTML=player2win;
     document.querySelector(".round").innerHTML=`Round: ${round+1}`;
+    document.querySelector(".finegioco").innerHTML="";
 }
 
 check1 = function(){
