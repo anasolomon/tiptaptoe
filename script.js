@@ -35,10 +35,10 @@ let c32= document.getElementById("col32");
 let c33= document.getElementById("col33");
 let turn = document.querySelector(".turn");             //WILL USE TO DISPLAY TURNS
 
-// let player1 = prompt("Enter player one's name: ");
-// let player2 = prompt("Enter player two's name: ");
-let player1 = "Ana";
-let player2 = "Denis";
+let player1 = prompt("Enter player one's name: ");
+let player2 = prompt("Enter player two's name: ");
+//let player1 = "Ana";
+//let player2 = "Denis";
 
 
 document.querySelector(".playerone").innerHTML=player1;
